@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: 'Quicksand', sans-serif;;
+}
+
+.food-container{
+  display: grid;
+  grid-template-columns: repeat(2,40%);
+  justify-content: center;
+  gap:2rem;
+}
+
+.food-item{
+  position: relative;
+}
+
+.food-item::after{
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 5px;
+  left: 0px;
+  bottom: 0px;
+  border-top: 1px dashed #d3d3d3;
+  border-bottom: 1px dashed #d3d3d3;
+}
+
+@media (max-width: 640px) { 
+  .food-container{
+    grid-template-columns: repeat(1,minmax(0,1fr));
+    justify-content: center;
+  }
+}
+.open-menu {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(70px); 
+  transition: transform 0.5s;
+  /* background-image: url(../src/assets/bg1.jpg); */
+}
+
+.open-menu-active {
+  transform: translateX(-50%) translateY(0); 
+}
+
+.menu-active{
+  background-color: #d3d3d3;
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin: 0 1.5rem .75rem 1.5rem;
+}
+
+.menu-header,.open-menu{
+  /* background-image: url(../src/assets/bg1.jpg); */
+  /* background-color: #e30b12; */
+  background-color:   #b61b1b;
+  font-family:'DM Serif Display', serif; 
+}
+
+.food-item-modal img{
+  max-height: 70vh;
+  width: 100%;
+  object-fit: cover;
+}
