@@ -55,7 +55,7 @@ export function MenuDrawer({menu,sliderRef,ind,setIndex}:DrawerProps) {
             <DrawerTitle className='text-center'>Menu</DrawerTitle>
           </DrawerHeader>
             {menu && menu.map((item:MenuType,index:number)=>{
-              return(<div>
+              return(<div key={item.id}>
                   <DrawerClose asChild className=''>
                     <div onClick={()=>slideTo(index)} data-key={index} className={`flex justify-between mb-3 mx-10 menu ${index==ind ? 'menu-active':''}`} style={{cursor:"pointer"}}>
                       <div className="text-center">
