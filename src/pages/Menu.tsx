@@ -111,11 +111,11 @@ function Menu() {
     // </>
     <>
     <div className='grid grid-cols-4' style={{height:'100vh'}}>
-      <div style={{border:'1px solid black'}}>
+      <div style={{border:'1px solid black'}} className='md:col-span-1 col-span-4'>
         <div className='pt-[15px]'>
           <img style={{ width: '190px',margin:'0 auto' }} src={"images/logo.svg"} alt="cafe-calicut-logo" />
         </div>
-        <div className='relative select-none my-4'>
+        <div className='relative select-none my-4 sticky top-0 bg-white py-4 border-b z-10'>
           <Swiper
               modules={[Navigation]}
               spaceBetween={10}
@@ -126,11 +126,11 @@ function Menu() {
           >  
           {menu && menu.map((item:MenuType,index:number)=>{
               return(<SwiperSlide key={item.id}>
-                  <div className='border border-grey-300 rounded-full h-[152px] w-[100px] text-justify p-2 overflow-hidden' onClick={()=>changeMenu(index)}>
-                    <div className='rounded-full overflow-hidden w-[70px] h-[70px] mx-auto'>
+                  <div className='border border-grey-300 bg-white rounded-full h-[162px] w-[110px] text-justify p-2 overflow-hidden' onClick={()=>changeMenu(index)}>
+                    <div className='rounded-full overflow-hidden w-[80px] h-[80px] mx-auto'>
                       <img className='w-full h-full object-cover' src={"images/menu-dummy.jpg"} alt="cafe-calicut-logo" />
                     </div>
-                    <div className='text-center text-xs font-semibold pt-3'>
+                    <div className='text-center text-[13px] font-semibold pt-3'>
                       {menuNameCheck(item.name)}
                     </div>
                   </div>
@@ -147,12 +147,12 @@ function Menu() {
           {(menu && menu[index].details.length>0) && menu[index].details.map((dish:DishType)=>{
             return(
               <Dialog key={dish.id}>
-                <DialogTrigger className='focus:outline-none' tabIndex={-1}>
-                  <div key={dish.id} className='food-item flex pb-6 gap-6' >
+                <DialogTrigger className='focus:outline-none w-full' tabIndex={-1}>
+                  <div key={dish.id} className='food-item flex py-3 gap-6 ' >
                     <img
                       alt={dish.heading+' image'}
                       src={"https://cafecalicut.com/backend/storage/images/"+dish.image}
-                      className='rounded-2xl xl:max-w-[80%] w-[150px] h-[200px] object-cover flex-shrink-0'
+                      className='rounded-2xl xl:max-w-[80%] w-[150px] h-[150px] object-cover flex-shrink-0'
                     />
                     <div className='flex flex-col items-start'>
                       <h2 className='text-base font-medium'>{dish.heading}</h2>
@@ -187,16 +187,13 @@ function Menu() {
         </div>
         </div>
       </div>
-      <div className='col-span-3' style={{border:'1px solid red'}}>
-     
+      <div className='md:col-span-3  col-span-0' style={{border:'1px solid red'}}>
+            dfa
       </div>
     </div>
     </>
   );
 }
 
-const SwiperComponent = memo(function SwiperComponent(){
-
-})
 
 export default Menu;
