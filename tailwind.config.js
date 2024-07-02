@@ -26,11 +26,22 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        'slide-in-from-top': {
+          '0%': { transform: 'translate(-50%, -150%)', opacity: '0' },
+          '100%': { transform: 'translate(-50%, -50%)', opacity: '1' },
+        },
+        'slide-out-to-top': {
+          '0%': { transform: 'translate(-50%, -50%)', opacity: '1' },
+          '100%': { transform: 'translate(-50%, -150%)', opacity: '0' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'slide-in-from-top': 'slide-in-from-top 0.5s ease-out',
+        'slide-out-to-top': 'slide-out-to-top 0.2s ease-in',
       },
+      
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -15,10 +15,12 @@ body{
   grid-template-columns: repeat(2,40%);
   justify-content: center;
   gap:2rem;
+  
 }
 
 .food-item{
   position: relative;
+ 
 }
 
 .food-item::after{
@@ -28,8 +30,10 @@ body{
   height: 5px;
   left: 0px;
   bottom: 0px;
-  border-top: 1px dashed #d3d3d3;
-  border-bottom: 1px dashed #d3d3d3;
+  border-top: 1px solid #e6e6e6;
+  bottom: -10px; /* Adjust to add padding below the line */
+  margin-top: 20px; /* Adjust this value as needed to control the gap */
+  /* border-bottom: 1px dashed #d3d3d3; */
 }
 
 @media (max-width: 640px) { 
