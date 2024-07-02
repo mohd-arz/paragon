@@ -4,9 +4,10 @@
 
 body{
   font-family: 'Quicksand', sans-serif;
+  background-color: #e30b13;
 }
 *{
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 .food-container{
@@ -67,4 +68,7 @@ body{
   max-height: 70vh;
   width: 100%;
   object-fit: cover;
+}
+.custom-shadow {
+  box-shadow: 0 0 50px #00000057;
 }

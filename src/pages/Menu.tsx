@@ -53,7 +53,6 @@ function Menu() {
   const [index,setIndex] = useState<number>(0);
 
   useEffect(()=>{
-    console.log('inside effect');
     axios.get(import.meta.env.VITE_BACKEND_URL+'/')
     .then(res=>{
       return setMenu(res.data.data);
@@ -82,10 +81,8 @@ function Menu() {
     setIndex(index);
   },[])
 
-  const i = 9 > index ? index + 1 :( Math.abs(9 - index)) == 0 ? 1 :  Math.abs(9 - index);
-  
-  console.log(menu);
-  
+  const i = 8 > index ? index + 1 :( Math.abs(8 - index)) == 0 ? 1 :  Math.abs(8 - index);
+    
   return (
     // <>
     // <Header/>
@@ -110,27 +107,33 @@ function Menu() {
     // <MenuDrawer sliderRef={sliderRef} menu={menu}  ind={index} setIndex={setIndex}/>
     // </>
     <>
-    <div className='grid grid-cols-4' style={{height:'100vh'}}>
-      <div style={{border:'1px solid black'}} className='md:col-span-1 col-span-4'>
+    <div className='flex flex-row '>
+      <div className='md:w-[480px] min-h-screen w-screen sm:w-screen custom-shadow bg-white'>
         <div className='pt-[15px]'>
-          <img style={{ width: '190px',margin:'0 auto' }} src={"images/logo.svg"} alt="cafe-calicut-logo" />
+          <img style={{ width: '170px',margin:'0 auto' }} src={"images/logo.svg"} alt="paragon-logo" />
         </div>
-        <div className='relative select-none my-4 sticky top-0 bg-white py-4 border-b z-10'>
+        <div className='relative select-none my-2 sticky top-0 bg-white py-2 border-b z-10'>
           <Swiper
               modules={[Navigation]}
               spaceBetween={10}
               slidesPerView={4.5}
+              // slidesPerView={'auto'}
               ref={sliderRef}
               // autoHeight={true}
               className='mx-6'
           >  
-          {menu && menu.map((item:MenuType,index:number)=>{
+          {menu && menu.map((item:MenuType,i:number)=>{
               return(<SwiperSlide key={item.id}>
-                  <div className='border border-grey-300 bg-white rounded-full h-[162px] w-[110px] text-justify p-2 overflow-hidden' onClick={()=>changeMenu(index)}>
-                    <div className='rounded-full overflow-hidden w-[80px] h-[80px] mx-auto'>
+                          <div
+                      className={`border border-grey-300 rounded-full h-[152px] md:w-[93px] text-justify p-2 overflow-hidden transition-colors duration-300 ${
+                        i == index ? 'bg-red-600 text-white' : 'bg-white text-black'
+                      }`}
+                      onClick={() => changeMenu(i)}
+                    >
+                    <div className='rounded-full overflow-hidden w-[60px] sm:w-[65px] md:w-[70px] md:h-[70px] mx-auto'>
                       <img className='w-full h-full object-cover' src={"images/menu-dummy.jpg"} alt="cafe-calicut-logo" />
                     </div>
-                    <div className='text-center text-[13px] font-semibold pt-3'>
+                    <div className='text-center text-[10px] sm:text-[10px] md:text-xs font-semibold pt-3'>
                       {menuNameCheck(item.name)}
                     </div>
                   </div>
@@ -141,7 +144,7 @@ function Menu() {
           <FiChevronLeft className="prev-arrow absolute left-0 top-2/4 cursor-pointer" onClick={handlePrev} style={{ color: 'lightgray', stroke: 'black', strokeWidth: '1', fontSize: '20px' }} />
           <FiChevronRight className="next-arrow absolute right-0 top-2/4 cursor-pointer" onClick={handleNext} style={{ color: 'lightgray', stroke: 'black', strokeWidth: '1', fontSize: '20px' }} />
         </div>
-        <div>
+        <div className='bg-white '>
           <div className='m-4 sm:m-6 md:m-8'>
           <img src={'public/bg_images/bg'+i+'.jpg'} style={{height:'210px',objectFit:'cover',width:'100%'}}/>
           {(menu && menu[index].details.length>0) && menu[index].details.map((dish:DishType)=>{
@@ -152,7 +155,7 @@ function Menu() {
                     <img
                       alt={dish.heading+' image'}
                       src={"https://cafecalicut.com/backend/storage/images/"+dish.image}
-                      className='rounded-2xl xl:max-w-[80%] w-[150px] h-[150px] object-cover flex-shrink-0'
+                      className='rounded-2xl xl:max-w-[80%] w-[130px] h-[130px] object-cover flex-shrink-0'
                     />
                     <div className='flex flex-col items-start'>
                       <h2 className='text-base font-medium'>{dish.heading}</h2>
@@ -187,8 +190,10 @@ function Menu() {
         </div>
         </div>
       </div>
-      <div className='md:col-span-3  col-span-0' style={{border:'1px solid red'}}>
-            dfa
+      <div className='md:w-full'>
+          <div className="hidden md:flex fixed top-0 bottom-0 items-center left-1/2 justify-center">
+            <img style={{ width: '300px',margin:'0 auto' }} src={"images/logo.svg"} alt="paragon-logo" />
+          </div>
       </div>
     </div>
     </>
