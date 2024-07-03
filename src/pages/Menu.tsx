@@ -259,7 +259,7 @@ function Menu() {
         <div className="md:w-full">
           <div
             className="hidden md:flex fixed top-0 bottom-0 
-              items-center justify-center  lg:left-[56%] left-[63%] left-0"
+              items-center justify-center  lg:left-[50%] left-[63%] left-0"
           >
             <img
               style={{ width: "300px", margin: "0 auto" }}
