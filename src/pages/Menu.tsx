@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import "swiper/css";
 import { useRef } from "react";
 import { Navigation } from "swiper/modules";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -195,7 +196,7 @@ function Menu() {
           <div className="bg-white ">
             <div className="m-4 sm:m-6 md:m-8">
               <img
-                src={"public/bg_images/bg" + i + ".jpg"}
+                src={`public/bg_images/bg${i}.jpg`}
                 style={{ height: "210px", objectFit: "cover", width: "100%" }}
               />
               {menu &&
@@ -226,7 +227,10 @@ function Menu() {
                             <p className="text-xs pt-2 text-start  mb-4">
                               {dish.description}
                             </p>
-                            <p className="mt-auto font-semibold">AED {dish.price}</p>
+                            <p className="mt-auto font-semibold flex items-center">
+                                <FaIndianRupeeSign className="mr-1" />{" "}
+                                {dish.price}
+                              </p>
                           </div>
                         </div>
                       </DialogTrigger>
@@ -248,7 +252,10 @@ function Menu() {
                               <h2 className="text-base font-semibold">
                                 {dish.heading}
                               </h2>
-                              <p className="mt-auto text-red-500 font-semibold">AED {dish.price}</p>
+                              <p className="mt-auto font-semibold flex items-center text-red-500">
+                                <FaIndianRupeeSign className="mr-1" />{" "}
+                                {dish.price}
+                              </p>
                             </div>
                             <p className="text-sm pt-2">{dish.description}</p>
                           </div>
@@ -259,7 +266,8 @@ function Menu() {
                 })}
               {menu && menu[index].details.length % 2 == 0 && (
                 <img
-                  src={"public/bg_images/bg" + (i + 1) + ".jpg"}
+                  // src={"public/bg_images/bg" + (i + 1) + ".jpg"}
+                  src={`public/bg_images/bg${(i + 1)}.jpg`}
                   style={{ height: "210px", objectFit: "cover", width: "100%" }}
                   className="mt-4"
                 />
