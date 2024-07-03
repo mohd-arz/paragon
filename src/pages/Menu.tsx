@@ -1,8 +1,5 @@
-import { useEffect, useState, useCallback, memo } from "react";
+import { useEffect, useState, useCallback} from "react";
 import axios from "axios";
-import { MenuDrawer } from "../components/app/MenuDrawer";
-import Item from "../components/app/Item";
-import Header from "../components/app/Header";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import "swiper/css";
 import { useRef } from "react";
@@ -45,13 +42,18 @@ type DishType = {
 
 function Menu() {
   const [menu, setMenu] = useState<MenuType[]>();
+  const [loading, setLoading] = useState<boolean>(true);
   const sliderRef = useRef<SwiperRef>(null);
   const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
-    axios.get(import.meta.env.VITE_BACKEND_URL + "/").then((res) => {
-      return setMenu(res.data.data);
-    });
+    axios.get(import.meta.env.VITE_BACKEND_URL + "/")
+      .then((res) => {
+        setMenu(res.data.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const handlePrev = useCallback(() => {
@@ -102,6 +104,11 @@ function Menu() {
     // <MenuDrawer sliderRef={sliderRef} menu={menu}  ind={index} setIndex={setIndex}/>
     // </>
     <>
+      {loading ? (
+        <div className="loader flex items-center justify-center min-h-screen">
+        <img src="images/logo.svg" alt="Loading..." className="animate-pulse" style={{ width: "300px", margin: "0 auto" }} />
+      </div>
+      ) : (
       <div className="flex flex-row ">
         <div className="md:w-[480px] min-h-screen w-screen sm:w-screen custom-shadow bg-white">
           <div className="pt-[15px]">
@@ -148,8 +155,12 @@ function Menu() {
                         <div className="rounded-full overflow-hidden w-[60px] sm:w-[65px] md:w-[70px] md:h-[70px] mx-auto">
                           <img
                             className="w-full h-full object-cover"
-                            src={"images/menu-dummy.jpg"}
-                            alt="cafe-calicut-logo"
+                            src={
+                              "https://calicutparagon.com/backend/storage/images/" +
+                              item.image
+                            }
+                            // src={"images/menu-dummy.jpg"}
+                            alt="calicut-paragon-logo"
                           />
                         </div>
                         <div className="text-center text-[10px] sm:text-[10px] md:text-[11px] font-semibold pt-3">
@@ -203,7 +214,7 @@ function Menu() {
                           <img
                             alt={dish.heading + " image"}
                             src={
-                              "https://cafecalicut.com/backend/storage/images/" +
+                              "https://calicutparagon.com/backend/storage/images/" +
                               dish.image
                             }
                             className="rounded-2xl xl:max-w-[80%] w-[130px] h-[130px] object-cover flex-shrink-0 transition-all duration-1000 hover:scale-110"
@@ -227,7 +238,7 @@ function Menu() {
                           <LazyLoadImage
                             alt={dish.heading + " image"}
                             src={
-                              "https://cafecalicut.com/backend/storage/images/" +
+                              "https://calicutparagon.com/backend/storage/images/" +
                               dish.image
                             }
                             className="rounded-tl-lg rounded-tr-lg"
@@ -270,6 +281,7 @@ function Menu() {
           </div>
         </div>
       </div>
+       )}
     </>
   );
 }
