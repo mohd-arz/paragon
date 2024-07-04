@@ -196,7 +196,7 @@ function Menu() {
           <div className="bg-white ">
             <div className="m-4 sm:m-6 md:m-8">
               <img
-                src={`public/bg_images/bg${i}.jpg`}
+                src={`bg_images/bg${i}.jpg`}
                 style={{ height: "210px", objectFit: "cover", width: "100%" }}
               />
               {menu &&
@@ -266,8 +266,8 @@ function Menu() {
                 })}
               {menu && menu[index].details.length % 2 == 0 && (
                 <img
-                  // src={"public/bg_images/bg" + (i + 1) + ".jpg"}
-                  src={`public/bg_images/bg${(i + 1)}.jpg`}
+                  // src={"bg_images/bg" + (i + 1) + ".jpg"}
+                  src={`bg_images/bg${(i + 1)}.jpg`}
                   style={{ height: "210px", objectFit: "cover", width: "100%" }}
                   className="mt-4"
                 />
