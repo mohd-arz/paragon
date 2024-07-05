@@ -80,7 +80,7 @@ function Menu() {
 
   const i =
     8 > index ? index + 1 : Math.abs(8 - index) == 0 ? 1 : Math.abs(8 - index);
-
+console.log(menu)
   return (
     // <>
     // <Header/>
@@ -157,7 +157,7 @@ function Menu() {
                           <img
                             className="w-full h-full object-cover"
                             src={
-                              "https://calicutparagon.com/backend/storage/images/" +
+                              "https://paragonrestaurant.in/backend/storage/images/" +
                               item.image
                             }
                             // src={"images/menu-dummy.jpg"}
@@ -215,7 +215,7 @@ function Menu() {
                           <img
                             alt={dish.heading + " image"}
                             src={
-                              "https://calicutparagon.com/backend/storage/images/" +
+                              "https://paragonrestaurant.in/backend/storage/images/" +
                               dish.image
                             }
                             className="rounded-2xl xl:max-w-[80%] w-[130px] h-[130px] object-cover flex-shrink-0 transition-all duration-1000 hover:scale-110"
