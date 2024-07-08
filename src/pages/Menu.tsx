@@ -242,7 +242,7 @@ console.log(menu)
                           <LazyLoadImage
                             alt={dish.heading + " image"}
                             src={
-                              "https://calicutparagon.com/backend/storage/images/" +
+                              "https://paragonrestaurant.in/backend/storage/images/" +
                               dish.image
                             }
                             className="rounded-tl-lg rounded-tr-lg"
